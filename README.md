@@ -43,7 +43,7 @@ PrusaSlicerConfig
 
 ### Personal
 
-I personally prefer a hidden directory inside my *HOME* which is added to the *PATH* via the
+I prefer a hidden directory inside my *HOME* which is added to the *PATH* via the
 (/etc/)[bash.bashrc](https://gist.github.com/R2-G2/b71248030139bc9648b4b712e25621d5#file-bash-bashrc-ubuntu-sh-L83)
 file.
 
