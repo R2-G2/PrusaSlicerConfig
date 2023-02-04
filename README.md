@@ -1,6 +1,6 @@
 <!-- Copyright (c) 2022-2023 Ralf Grawunder -->
 
-# PrusaSlicerConfig: manage your [prusa3d](https://github.com/prusa3d) / [PrusaSlicer](https://github.com/prusa3d/PrusaSlicer) settings in a dedicated configuration folder
+# [PrusaSlicer](https://github.com/prusa3d/PrusaSlicer)Config: manage your 3D printing settings in a dedicated configuration folder
 
 ## Preamble
 
