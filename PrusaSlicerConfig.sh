@@ -12,22 +12,26 @@ dir_dedicated="$(readlink -m "${dir_dedicated}";)";
 
 ext=".ini";
 
-normalize_configurations() {
-    local folder="${dir_dedicated}/${1}";
+maintain_settings() {
+    local folder_prusa_slicer="${dir_prusa_slicer}/${1}";
+    local folder_dedicated="${dir_dedicated}/${1}";
 
-    [ -d "${folder}" ] &&
-    find "${folder}/"*"${ext}" -type f -regextype posix-extended ! -regex ".+/${2}\\${ext}$" | while read file; do
-        sed -Ei "s/=$/= /; s/(${3}_settings_id =).*/\1 $(basename "${file}" "${ext}";)/;" "${file}";
+    [ ! -L "${folder_prusa_slicer}" ] &&
+    cp -vrf "${folder_prusa_slicer}" "${dir_dedicated}" && rm -vrf "${folder_prusa_slicer}" &&
+    ln -vs "${folder_dedicated}" "${dir_prusa_slicer}";
+
+    find "${folder_dedicated}/"*"${ext}" -type f -regextype posix-extended ! -regex ".+/${3}\\${ext}$" |
+    while read file; do
+        sed -i "s/=$/= /" "${file}";
+
+        [ true = ${2} ] && sed -Ei "s/^(${1}_settings_id = )(\"?).*/\1\2$(basename "${file}" "${ext}";)\2/" "${file}";
     done;
 }
 
-find "${dir_dedicated}/"* -maxdepth 0 -type d -printf "%f\n" | while read folder; do
-    folder_backup="${dir_prusa_slicer}/${folder}";
-
-    [ ! -L "${folder_backup}" ] &&
-    mv -vf "${folder_backup}" "${dir_dedicated}" && ln -vs "${dir_dedicated}/${folder}" "${dir_prusa_slicer}";
-done;
-
-normalize_configurations "printer" "${exclude_printer}" "printer";
-normalize_configurations "sla_material" "${exclude_sla_material}" "material";
-normalize_configurations "sla_print" "${exclude_sla_print}" "print";
+maintain_settings "filament" true "${exclude_filament}";
+maintain_settings "physical_printer" false "${exclude_physical_printer}";
+maintain_settings "print" true "${exclude_print}";
+maintain_settings "printer" true "${exclude_printer}";
+maintain_settings "sla_material" true "${exclude_sla_material}";
+maintain_settings "sla_print" true "${exclude_sla_print}";
+maintain_settings "vendor" false "${exclude_vendor}";
