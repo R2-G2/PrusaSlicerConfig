@@ -22,8 +22,9 @@ editor config.sh
 
 Simply run **PrusaSlicerConfig**.
 
-This will back up directories from your **PrusaSlicer** configuration folder matching the ones located in your dedicated
-configuration folder and replace them with symlinks to latter ones.
+This will back up relevant **PrusaSlicer** configuration folders (as in snapshots) to your dedicated configuration
+directory and replace them with symlinks. Some configurations will get their settings id rewritten based on the
+filename.
 
 ```shell
 ./PrusaSlicerConfig.sh
