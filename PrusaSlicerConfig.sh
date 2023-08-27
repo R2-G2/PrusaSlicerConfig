@@ -34,4 +34,3 @@ maintain_settings "print" true "${exclude_print}";
 maintain_settings "printer" true "${exclude_printer}";
 maintain_settings "sla_material" true "${exclude_sla_material}";
 maintain_settings "sla_print" true "${exclude_sla_print}";
-maintain_settings "vendor" false "${exclude_vendor}";

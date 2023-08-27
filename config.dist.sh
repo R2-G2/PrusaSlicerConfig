@@ -18,13 +18,10 @@ exclude_physical_printer="";
 exclude_print="";
 
 # printer exclusion regex; can be empty
-exclude_printer="AnyCubic Photon Mono"; # UVtools
+exclude_printer="";
 
 # SLA material exclusion regex; can be empty
 exclude_sla_material="";
 
 # SLA print exclusion regex; can be empty
 exclude_sla_print="Universal .*"; # UVtools
-
-# vendor exclusion regex; can be empty
-exclude_vendor="";
