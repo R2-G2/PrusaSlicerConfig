@@ -24,4 +24,4 @@ exclude_printer="";
 exclude_sla_material="";
 
 # SLA print exclusion regex; can be empty
-exclude_sla_print="Universal .*"; # UVtools
+exclude_sla_print="";
