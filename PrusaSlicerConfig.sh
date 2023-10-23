@@ -24,7 +24,7 @@ maintain_settings() {
     while read file; do
         sed -i "s/=$/= /" "${file}";
 
-        [ true = ${2} ] && sed -Ei "s/^(${1}_settings_id = )(\"?).*/\1\2$(basename "${file}" "${ext}";)\2/" "${file}";
+        [ true = ${2} ] && sed -Ei "s/^(${1}_settings_id = )(\"?).*/\1\2$(basename "${file}" "${ext}" | sed -E "s/${strip_from_settings_id}//g";)\2/" "${file}";
     done;
 }
 

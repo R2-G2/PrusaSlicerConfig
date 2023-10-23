@@ -8,6 +8,9 @@ dir_prusa_slicer="${HOME}/.config/PrusaSlicer";
 # dedicated configuration folder; can be relative
 dir_dedicated="../PrusaSlicer.config/cfg";
 
+# settings ID keyword stripping regex; can't be empty, try [()]
+strip_from_settings_id="\.(new|old)"
+
 # filament exclusion regex; can be empty
 exclude_filament="";
 
