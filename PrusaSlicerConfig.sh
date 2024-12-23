@@ -16,16 +16,18 @@ maintain_settings() {
     local folder_prusa_slicer="${dir_prusa_slicer}/${1}";
     local folder_dedicated="${dir_dedicated}/${1}";
 
-    [ ! -L "${folder_prusa_slicer}" ] &&
-    cp -vrf "${folder_prusa_slicer}" "${dir_dedicated}" && rm -vrf "${folder_prusa_slicer}" &&
-    ln -vs "${folder_dedicated}" "${dir_prusa_slicer}";
+    if [ ! -L "${folder_prusa_slicer}" ]; then
+        cp -vrf "${folder_prusa_slicer}" "${dir_dedicated}" && rm -vrf "${folder_prusa_slicer}" ||
+            mkdir -vp "${folder_dedicated}";
+        ln -vs "${folder_dedicated}" "${dir_prusa_slicer}";
+    fi
 
     find "${folder_dedicated}/"*"${ext}" -type f -regextype posix-extended ! -regex ".+/${3}\\${ext}$" |
-    while read file; do
-        sed -i "s/=$/= /" "${file}";
-
-        [ true = ${2} ] && sed -Ei "s/^(${1}_settings_id = )(\"?).*/\1\2$(basename "${file}" "${ext}" | sed -E "s/${strip_from_settings_id}//g";)\2/" "${file}";
-    done;
+        while read file; do
+            sed -i "s/=$/= /" "${file}";
+            [ true = ${2} ] && sed -Ei "s/^(${1}_settings_id = )(\"?).*/\1\2$(basename "${file}" "${ext}" |
+                sed -E "s/${strip_from_settings_id}//g";)\2/" "${file}";
+        done;
 }
 
 maintain_settings "filament" true "${exclude_filament}";

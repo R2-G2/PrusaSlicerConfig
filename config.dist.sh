@@ -3,28 +3,28 @@
 # Copyright (c) 2022-2023 Ralf Grawunder
 
 # PrusaSlicer configuration folder; can be relative
-dir_prusa_slicer="${HOME}/.config/PrusaSlicer";
+dir_prusa_slicer="${HOME}/.var/app/com.prusa3d.PrusaSlicer/config/PrusaSlicer";
 
 # dedicated configuration folder; can be relative
 dir_dedicated="../PrusaSlicer.config/cfg";
 
 # settings ID keyword stripping regex; can't be empty, try [()]
-strip_from_settings_id="\.(new|old)"
+strip_from_settings_id="\.(new|old|tmp)"
 
-# filament exclusion regex; can be empty
+# filaments exclusion regex; can be empty
 exclude_filament="";
 
-# physical printer exclusion regex; can be empty
+# machines exclusion regex; can be empty
 exclude_physical_printer="";
 
-# print exclusion regex; can be empty
+# print settings exclusion regex; can be empty
 exclude_print="";
 
-# printer exclusion regex; can be empty
+# printers exclusion regex; can be empty
 exclude_printer="";
 
-# SLA material exclusion regex; can be empty
+# SLA materials exclusion regex; can be empty
 exclude_sla_material="";
 
-# SLA print exclusion regex; can be empty
+# SLA print settings exclusion regex; can be empty
 exclude_sla_print="";
