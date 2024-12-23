@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Copyright (c) 2022-2023 Ralf Grawunder
+# Copyright (c) 2022-2024 Ralf Grawunder
 
 cd "$(dirname "$(readlink -m "${0}";)";)" || exit 1;
 [ -f config.sh ] && . ./config.sh || . ./config.dist.sh;

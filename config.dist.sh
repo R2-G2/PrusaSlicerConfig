@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Copyright (c) 2022-2023 Ralf Grawunder
+# Copyright (c) 2022-2024 Ralf Grawunder
 
 # PrusaSlicer configuration folder; can be relative
 dir_prusa_slicer="${HOME}/.var/app/com.prusa3d.PrusaSlicer/config/PrusaSlicer";
