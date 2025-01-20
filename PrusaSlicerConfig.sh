@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Copyright (c) 2022-2024 Ralf Grawunder
+# Copyright (c) 2022-2025 Ralf Grawunder
 
 cd "$(dirname "$(readlink -m "${0}";)";)" || exit 1;
 [ -f config.sh ] && . ./config.sh || . ./config.dist.sh;
@@ -22,17 +22,15 @@ maintain_settings() {
         ln -vs "${folder_dedicated}" "${dir_prusa_slicer}";
     fi
 
-    find "${folder_dedicated}/"*"${ext}" -type f -regextype posix-extended ! -regex ".+/${3}\\${ext}$" |
+    find "${folder_dedicated}/"*"${ext}" -type f -regextype posix-extended ! -regex ".+/${2}\\${ext}$" |
         while read file; do
             sed -i "s/=$/= /" "${file}";
-            [ true = ${2} ] && sed -Ei "s/^(${1}_settings_id = )(\"?).*/\1\2$(basename "${file}" "${ext}" |
-                sed -E "s/${strip_from_settings_id}//g";)\2/" "${file}";
         done;
 }
 
-maintain_settings "filament" true "${exclude_filament}";
-maintain_settings "physical_printer" false "${exclude_physical_printer}";
-maintain_settings "print" true "${exclude_print}";
-maintain_settings "printer" true "${exclude_printer}";
-maintain_settings "sla_material" true "${exclude_sla_material}";
-maintain_settings "sla_print" true "${exclude_sla_print}";
+maintain_settings "filament" "${exclude_filament}";
+maintain_settings "physical_printer" "${exclude_physical_printer}";
+maintain_settings "print" "${exclude_print}";
+maintain_settings "printer" "${exclude_printer}";
+maintain_settings "sla_material" "${exclude_sla_material}";
+maintain_settings "sla_print" "${exclude_sla_print}";

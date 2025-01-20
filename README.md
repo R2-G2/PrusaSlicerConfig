@@ -1,10 +1,10 @@
-<!-- Copyright (c) 2022-2024 Ralf Grawunder -->
+<!-- Copyright (c) 2022-2025 Ralf Grawunder -->
 
 # [PrusaSlicer](https://github.com/prusa3d/PrusaSlicer)Config: manage your 3D printing settings in a dedicated configuration folder
 
 ## Preamble
 
-**PrusaSlicerConfig** enables you to  maintain your **PrusaSlicer** settings easily with **Git**,
+**PrusaSlicerConfig** enables you to maintain your **PrusaSlicer** settings easily with **Git**,
 [like I do](https://github.com/R2-G2/PrusaSlicer.config).
 
 ## Setup
@@ -23,8 +23,7 @@ editor config.sh
 Simply run **PrusaSlicerConfig**.
 
 This will back up relevant **PrusaSlicer** configuration folders (as in snapshots) to your dedicated configuration
-directory and replace them with symlinks. Some configurations will get their settings id rewritten based on the
-filename.
+directory and replace them with symlinks. Empty configurations will be normalized with a trailing space.
 
 ```shell
 ./PrusaSlicerConfig.sh
